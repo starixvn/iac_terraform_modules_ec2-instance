@@ -2,15 +2,13 @@
 
 Terraform module which creates an EC2 instance on AWS.
 
-[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
-
 ## Usage
 
 ### Single EC2 Instance
 
 ```hcl
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source  = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
 
   name = "single-instance"
 
@@ -31,7 +29,7 @@ module "ec2_instance" {
 
 ```hcl
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source  = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
 
   for_each = toset(["one", "two", "three"])
 
@@ -54,7 +52,7 @@ module "ec2_instance" {
 
 ```hcl
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
+  source  = "gitlab.nexdev.net/iac-terraform/ec2-instance/aws"
 
   name = "spot-instance"
 
@@ -79,12 +77,12 @@ module "ec2_instance" {
 
 Users of this Terraform module can create multiple similar resources by using [`for_each` meta-argument within `module` block](https://www.terraform.io/language/meta-arguments/for_each) which became available in Terraform 0.13.
 
-Users of Terragrunt can achieve similar results by using modules provided in the [wrappers](https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/tree/master/wrappers) directory, if they prefer to reduce amount of configuration files.
+Users of Terragrunt can achieve similar results by using modules provided in the [wrappers](https://github.com/gitlab.nexdev.net/iac-terraform/terraform-aws-ec2-instance/tree/master/wrappers) directory, if they prefer to reduce amount of configuration files.
 
 ## Examples
 
-- [Complete EC2 instance](https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/tree/master/examples/complete)
-- [EC2 instance with EBS volume attachment](https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/tree/master/examples/volume-attachment)
+- [Complete EC2 instance](https://github.com/gitlab.nexdev.net/iac-terraform/terraform-aws-ec2-instance/tree/master/examples/complete)
+- [EC2 instance with EBS volume attachment](https://github.com/gitlab.nexdev.net/iac-terraform/terraform-aws-ec2-instance/tree/master/examples/volume-attachment)
 
 ## Make an encrypted AMI for use
 
@@ -152,8 +150,8 @@ The following combinations are supported to conditionally create resources:
 
 ## Notes
 
-- `network_interface` can't be specified together with `vpc_security_group_ids`, `associate_public_ip_address`, `subnet_id`. See [complete example](https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/tree/master/examples/complete) for details.
-- Changes in `ebs_block_device` argument will be ignored. Use [aws_volume_attachment](https://www.terraform.io/docs/providers/aws/r/volume_attachment.html) resource to attach and detach volumes from AWS EC2 instances. See [this example](https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/tree/master/examples/volume-attachment).
+- `network_interface` can't be specified together with `vpc_security_group_ids`, `associate_public_ip_address`, `subnet_id`. See [complete example](https://github.com/gitlab.nexdev.net/iac-terraform/terraform-aws-ec2-instance/tree/master/examples/complete) for details.
+- Changes in `ebs_block_device` argument will be ignored. Use [aws_volume_attachment](https://www.terraform.io/docs/providers/aws/r/volume_attachment.html) resource to attach and detach volumes from AWS EC2 instances. See [this example](https://github.com/gitlab.nexdev.net/iac-terraform/terraform-aws-ec2-instance/tree/master/examples/volume-attachment).
 - In regards to spot instances, you must grant the `AWSServiceRoleForEC2Spot` service-linked role access to any custom KMS keys, otherwise your spot request and instances will fail with `bad parameters`. You can see more details about why the request failed by using the awscli and `aws ec2 describe-spot-instance-requests`
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -292,11 +290,11 @@ No modules.
 
 ## Authors
 
-Module is maintained by [Anton Babenko](https://github.com/antonbabenko) with help from [these awesome contributors](https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/graphs/contributors).
+Module is maintained by [Anton Babenko](https://github.com/antonbabenko) with help from [these awesome contributors](https://github.com/gitlab.nexdev.net/iac-terraform/terraform-aws-ec2-instance/graphs/contributors).
 
 ## License
 
-Apache 2 Licensed. See [LICENSE](https://github.com/terraform-aws-modules/terraform-aws-ec2-instance/tree/master/LICENSE) for full details.
+Apache 2 Licensed. See [LICENSE](https://github.com/gitlab.nexdev.net/iac-terraform/terraform-aws-ec2-instance/tree/master/LICENSE) for full details.
 
 ## Additional information for users from Russia and Belarus
 
